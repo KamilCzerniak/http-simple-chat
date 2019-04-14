@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" th:href="@{style.css}" href="../static/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+<h4 class="chat-headline text-center">Chat app</h4>
+<div class="container">
+    <div class="user-form">
+        <form class="for" action="#" th:action="@{/chat}" th:object="${chatMessage}" method="post">
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <select class="form-control" id="contact" th:field="*{ip}">
+                    <option th:each="contact : ${contacts}"
+                        th:text="${contact.getName()}" th:value="${contact.getContactDetails()}" />
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <input type="text" class="form-control" id="message" placeholder="message" th:field="*{value}">
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
